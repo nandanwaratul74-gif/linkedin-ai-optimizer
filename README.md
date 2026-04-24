@@ -38,23 +38,15 @@ graph TD
 
 ## 🧠 Architecture Diagram
 
-```mermaid
 flowchart LR
-
-A[User] --> B[Streamlit Frontend]
-
-B --> C[Backend Logic (app.py)]
-
-C --> D[Gemini AI API]
-C --> E[Tavily Search API]
-
-D --> F[AI Processing]
-E --> F
-
-F --> G[Processed Output]
-
-G --> B
-```
+    A[User] --> B[Streamlit Frontend]
+    B --> C[Backend Logic app.py]
+    C --> D[Gemini AI API]
+    C --> E[Tavily Search API]
+    D --> F[AI Processing]
+    E --> F
+    F --> G[Processed Output]
+    G --> B
 This project follows a sequential multi-agent architecture where each AI agent performs a specialized task and passes output to the next stage.
 
 ---
