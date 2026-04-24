@@ -38,8 +38,6 @@ graph TD
 
 ## 🧠 Architecture Diagram
 
-## 🏗️ High-Level Architecture
-
 ```mermaid
 flowchart LR
 
@@ -56,7 +54,6 @@ E --> F
 F --> G[Processed Output]
 
 G --> B
-`
 ```
 This project follows a sequential multi-agent architecture where each AI agent performs a specialized task and passes output to the next stage.
 
