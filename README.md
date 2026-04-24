@@ -38,17 +38,40 @@ graph TD
 
 ## 🧠 Architecture Diagram
 
-flowchart LR
-    A[User] --> B[Streamlit Frontend]
-    B --> C[Backend Logic app.py]
-    C --> D[Gemini AI API]
-    C --> E[Tavily Search API]
-    D --> F[AI Processing]
-    E --> F
-    F --> G[Processed Output]
-    G --> B
-This project follows a sequential multi-agent architecture where each AI agent performs a specialized task and passes output to the next stage.
+graph TD
+    %% Define Styles
+    classDef user fill:#e1f5fe,stroke:#01579b,stroke-width:2px;
+    classDef frontend fill:#fff3e0,stroke:#e65100,stroke-width:2px;
+    classDef agent fill:#f3e5f5,stroke:#4a148c,stroke-width:2px;
+    classDef external fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px;
 
+    subgraph UI_Layer [User Interface Layer]
+        A[User]:::user -->|Input Profile Data| B(Streamlit Web Interface):::frontend
+        B -->|Displays Analysis & Results| A
+    end
+
+    subgraph Agent_Orchestrator [AI Agent Pipeline]
+        B --> C{Orchestrator Logic}:::agent
+        C --> C1[Researcher Agent]:::agent
+        C --> C2[Analyzer Agent]:::agent
+        C --> C3[Rewriter Agent]:::agent
+        C --> C4[Judge Agent]:::agent
+    end
+
+    subgraph Services_Layer [External Integrations]
+        C1 <-->|Live Market Data| D[Tavily Search API]:::external
+        C2 <-->|Profile Scoring| E[Gemini 2.5 Flash]:::external
+        C3 <-->|Content Optimization| E
+        C4 <-->|Final Validation| E
+    end
+
+    subgraph Output_Layer [Data & Delivery]
+        C4 --> F[(Optimized Profile)]
+        F --> G[JSON Export]
+        F --> H[ATS Score Report]
+    end
+
+    F -.->|Callback| B
 ---
 
 ## 📁 Project Structure Diagram
