@@ -36,6 +36,24 @@ graph TD
     style G fill:#2e3440,stroke:#88c0d0,stroke-width:2px,color:#fff
 ```
 
+## 🧠 Architecture Diagram
+
+```mermaid
+flowchart TD
+
+A[User Input - LinkedIn Profile] --> B[Researcher Agent]
+B -->|Tavily API| C[Job Market Data]
+
+C --> D[Analyzer Agent]
+D -->|Profile Score| E[Rewriter Agent]
+
+E -->|Optimized Profile| F[Judge Agent]
+F -->|Quality Check| G[Final Output]
+
+G --> H[Streamlit UI]
+```
+This project follows a sequential multi-agent architecture where each AI agent performs a specialized task and passes output to the next stage.
+
 ---
 
 ## 📁 Project Structure Diagram
