@@ -46,48 +46,15 @@ This project follows a layered AI architecture with an agent-based orchestration
 
 ### 🔷 High-Level Architecture (HLD)
 
-```mermaid
 flowchart LR
-
-%% User Layer
-A[User / Browser] --> B[Streamlit Frontend UI]
-
-%% API Layer
-B --> C[API Layer / Controller (app.py)]
-
-%% Orchestration Layer
-C --> D[Agent Orchestrator]
-
-%% Agents
-D --> R[Research Agent]
-D --> A1[Analyzer Agent]
-D --> W[Rewrite Agent]
-D --> J[Judge Agent]
-
-%% External Services
-R --> T[Tavily Search API]
-
-A1 --> G[Gemini AI API]
-W --> G
-J --> G
-
-%% Data Layer
-C --> DB[(Database / Storage)]
-D --> CACHE[(Redis Cache)]
-
-%% Processing
-T --> P[Context Builder]
-G --> P
-
-P --> D
-
-%% Output
-D --> C
-C --> B
-B --> O[Optimized LinkedIn Profile]
-
-%% Logging
-C --> L[Logging / Monitoring]
+    A[User] --> B[Streamlit Frontend]
+    B --> C[Backend Logic app.py]
+    C --> D[Gemini AI API]
+    C --> E[Tavily Search API]
+    D --> F[AI Processing]
+    E --> F
+    F --> G[Processed Output]
+    G --> B
 ---
 
 ## 📁 Project Structure Diagram
