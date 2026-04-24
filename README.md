@@ -38,19 +38,25 @@ graph TD
 
 ## 🧠 Architecture Diagram
 
+## 🏗️ High-Level Architecture
+
 ```mermaid
-flowchart TD
+flowchart LR
 
-A[User Input - LinkedIn Profile] --> B[Researcher Agent]
-B -->|Tavily API| C[Job Market Data]
+A[User] --> B[Streamlit Frontend]
 
-C --> D[Analyzer Agent]
-D -->|Profile Score| E[Rewriter Agent]
+B --> C[Backend Logic (app.py)]
 
-E -->|Optimized Profile| F[Judge Agent]
-F -->|Quality Check| G[Final Output]
+C --> D[Gemini AI API]
+C --> E[Tavily Search API]
 
-G --> H[Streamlit UI]
+D --> F[AI Processing]
+E --> F
+
+F --> G[Processed Output]
+
+G --> B
+`
 ```
 This project follows a sequential multi-agent architecture where each AI agent performs a specialized task and passes output to the next stage.
 
